@@ -8,8 +8,8 @@ namespace DyingInside.Cheats
 	{
 		public static Cheat[] cheats = {
 			// Game
-			new NoAfk(UnityEngine.KeyCode.None, "NoAfk", false),
-			new NoFilter(UnityEngine.KeyCode.None, "NoFilter", false),
+			new NoAfk(UnityEngine.KeyCode.None, "NoAfk", true),
+			new NoFilter(UnityEngine.KeyCode.None, "NoFilter", true),
 			// Movement
 			new Fly(UnityEngine.KeyCode.F1, "Fly", false),
 			new HighJump(UnityEngine.KeyCode.F4, "HighJump", false),
