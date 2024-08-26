@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35219.272
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DyingInside", "DyingInside\DyingInside.csproj", "{C0D5A4EC-98F0-4D48-9FE8-856C4C07343E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C0D5A4EC-98F0-4D48-9FE8-856C4C07343E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0D5A4EC-98F0-4D48-9FE8-856C4C07343E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0D5A4EC-98F0-4D48-9FE8-856C4C07343E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0D5A4EC-98F0-4D48-9FE8-856C4C07343E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C528460F-2C78-40C9-A9A3-E9C73EB7A431}
+	EndGlobalSection
+EndGlobal
