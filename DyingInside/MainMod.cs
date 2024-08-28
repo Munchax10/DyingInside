@@ -1,14 +1,15 @@
 ﻿using DyingInside.Cheats;
+using Il2Cpp;
 using MelonLoader;
 using UnityEngine;
 
 namespace DyingInside
 {
-	public class MainMod : MelonMod
+	internal class MainMod : MelonMod
 	{
 		public override void OnLateInitializeMelon()
 		{
-			MelonEvents.OnGUI.Subscribe(draw, 100);
+			MelonEvents.OnGUI.Subscribe(CheatGUI.Render, 100);
 			// Set defaults or load from json
 			Utils.Logger.SetLogger(LoggerInstance);
 			Utils.Logger.Msg("DyingInside loaded!");
@@ -22,27 +23,14 @@ namespace DyingInside
 			}
 		}
 
-		private void draw()
-		{
-			GUI.Box(new Rect(10f, Screen.height - 250, 178f, 240f), "Test: OFF");
-		}
-
 		public override void OnUpdate()
 		{
 			// Main event
 			foreach (var cheat in CheatManager.cheats)
 			{
-				if (Input.GetKeyDown(cheat.key))
+				if (Input.GetKeyDown(cheat.Key))
 				{
-					if (cheat.toggled)
-					{
-						cheat.toggled = false;
-						cheat.OnDisable();
-					} else
-					{
-						cheat.toggled = true;
-						cheat.OnEnable();
-					}
+					cheat.Toggle();
 				}
 			}
 
@@ -51,6 +39,7 @@ namespace DyingInside
 
 		public override void OnFixedUpdate()
 		{
+			if (ControllerHelper.kukouriCamera != null) ControllerHelper.kukouriCamera.minZoom = 1;
 			CheatManager.OnUpdate();
 		}
 

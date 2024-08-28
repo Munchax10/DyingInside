@@ -2,9 +2,9 @@
 
 namespace DyingInside.Cheats.Movement
 {
-	public class HighJump : Cheat
+	internal class HighJump : Cheat
 	{
-		public HighJump(KeyCode key, string name, bool toggled) : base(key, name, toggled)
+		public HighJump(KeyCode key, string name, bool toggled, Category category) : base(key, name, toggled, category)
 		{
 			// ConfigDataPatch.cs
 		}

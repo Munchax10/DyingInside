@@ -1,8 +1,9 @@
-﻿using MelonLoader;
+﻿using Il2Cpp;
+using MelonLoader;
 
 namespace DyingInside.Utils
 {
-	public class Logger
+	internal class Logger
 	{
 		static MelonLogger.Instance? Instance;
 

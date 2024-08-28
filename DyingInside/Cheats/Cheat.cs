@@ -2,16 +2,37 @@
 
 namespace DyingInside.Cheats
 {
-	public class Cheat
+	internal class Cheat
 	{
-		public KeyCode key { get; set; }
-		public string name { get; set; }
-		public bool toggled { get; set; }
-		public Cheat(KeyCode key, string name, bool toggled)
+		public KeyCode Key;
+		public string Name;
+		public bool Toggled;
+		public Category Category;
+
+		public Cheat(KeyCode key, string name, bool toggled, Category category)
 		{
-			this.key = key;
-			this.name = name;
-			this.toggled = toggled;
+			Key = key;
+			Name = name;
+			Toggled = toggled;
+			Category = category;
+		}
+
+		public void Enable()
+		{
+			Toggled = true;
+			OnEnable();
+		}
+
+		public void Disable()
+		{
+			Toggled = false;
+			OnDisable();
+		}
+
+		public void Toggle()
+		{
+			if (Toggled) Disable();
+			else Enable();
 		}
 
 		// Methods to override

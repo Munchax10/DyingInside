@@ -2,9 +2,9 @@
 
 namespace DyingInside.Cheats.Game
 {
-	public class NoFilter : Cheat
+	internal class NoFilter : Cheat
 	{
-		public NoFilter(KeyCode key, string name, bool toggled) : base(key, name, toggled)
+		public NoFilter(KeyCode key, string name, bool toggled, Category category) : base(key, name, toggled, category)
 		{
 
 		}

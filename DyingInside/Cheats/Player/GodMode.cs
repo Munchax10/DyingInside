@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace DyingInside.Cheats.Player
 {
-	public class GodMode : Cheat
+	internal class GodMode : Cheat
 	{
-		public GodMode(KeyCode key, string name, bool toggled) : base(key, name, toggled)
+		public GodMode(KeyCode key, string name, bool toggled, Category category) : base(key, name, toggled, category)
 		{
 			// ConfigDataPatch.cs
 		}
@@ -15,7 +15,7 @@ namespace DyingInside.Cheats.Player
 		{
 
 			// Set to 0
-			ControllerHelper.worldController.player.instakillLayerInt = 9;
+			//ControllerHelper.worldController.player.instakillLayerInt = 9;
 		}
 	}
 }

@@ -2,9 +2,9 @@
 
 namespace DyingInside.Cheats.Game
 {
-	public class NoAfk : Cheat
+	internal class NoAfk : Cheat
 	{
-		public NoAfk(KeyCode key, string name, bool toggled) : base(key, name, toggled)
+		public NoAfk(KeyCode key, string name, bool toggled, Category category) : base(key, name, toggled, category)
 		{
 
 		}

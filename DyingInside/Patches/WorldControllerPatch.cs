@@ -6,7 +6,6 @@ namespace DyingInside.Patches
 {
 	internal class WorldControllerPatch
 	{
-
 		[HarmonyPatch(typeof(WorldController), "InstantiateFogOfWar")]
 		private static class WorldController_InstantiateFogOfWar
 		{
@@ -21,9 +20,7 @@ namespace DyingInside.Patches
 		{
 			public static bool Prefix()
 			{
-				Cheat? noafk = CheatManager.GetInstance("NoAfk");
-				if (noafk != null) return !noafk.toggled;
-				return true;
+				return !CheatManager.GetToggled("NoAfk");
 			}
 		}
 	}

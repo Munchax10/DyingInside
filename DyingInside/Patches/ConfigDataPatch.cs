@@ -4,19 +4,27 @@ using DyingInside.Cheats.Movement;
 using DyingInside.Utils;
 using HarmonyLib;
 using Il2Cpp;
+using Mono.CSharp;
 
 
 namespace DyingInside.Patches
 {
 	internal class ConfigDataPatch
+
+		// LAGHACK, portal warp (dest and into it)
 	{
-		[HarmonyPatch(typeof(ConfigData), "GetBlockGravity")]
-		private static class ConfigData_GetBlockGravity
+
+
+		[HarmonyPatch(typeof(ConfigData), "DoesBlockHaveCollider")]
+		private static class ConfigData_DoesBlockHaveCollider
 		{
-			private static bool Prefix()
+			private static bool Prefix(World.BlockType blockType, ref bool __result)
 			{
-				Cheat? fly = CheatManager.GetInstance("Fly");
-				if (fly != null) return !fly.toggled;
+				if (CheatManager.GetToggled("NoKnocback") && (blockType == World.BlockType.SpikeBall || blockType == World.BlockType.Spikes))
+				{
+					__result = true;
+					return false;
+				}
 				return true;
 			}
 		}
@@ -26,8 +34,7 @@ namespace DyingInside.Patches
 		{
 			private static bool Prefix(ref float __result, World.BlockType blockType)
 			{
-				Cheat? speed = CheatManager.GetInstance("Speed");
-				if (Globals.glue.Contains((int) blockType) || speed == null || !speed.toggled) return true;
+				if (Globals.glue.Contains((int) blockType) || !CheatManager.GetToggled("Speed")) return true;
 
 				__result = 3;
 
@@ -40,8 +47,7 @@ namespace DyingInside.Patches
 		{
 			private static bool Prefix(ref float __result)
 			{
-				Cheat? highjump = CheatManager.GetInstance("HighJump");
-				if (highjump == null || !highjump.toggled) return true;
+				if (!CheatManager.GetToggled("HighJump")) return true;
 
 				__result = 0.8f;
 
@@ -56,23 +62,19 @@ namespace DyingInside.Patches
 		{
 			private static bool Prefix()
 			{
-				Cheat? noKnockback = CheatManager.GetInstance("NoKnockback");
-				bool toggled = false;
-				if (noKnockback != null) toggled = noKnockback.toggled;
-
 				foreach (int i in Globals.ice)
 				{
-					if (toggled) ConfigData.SetBlockGroundDamping("10", i);
+					if (CheatManager.GetToggled("NoKnockback")) ConfigData.SetBlockGroundDamping("10", i);
 					else ConfigData.SetBlockGroundDamping("1", i);
 				}
 
 				foreach (int i in Globals.glue)
 				{
-					if (toggled) ConfigData.SetBlockRunSpeed("1.8", i);
+					if (CheatManager.GetToggled("NoKnockback")) ConfigData.SetBlockRunSpeed("1.8", i);
 					else ConfigData.SetBlockRunSpeed("0.3", i);
 				}
 				
-				return !toggled;
+				return !CheatManager.GetToggled("NoKnockback");
 			}
 		}
 
@@ -81,9 +83,7 @@ namespace DyingInside.Patches
 		{
 			private static bool Prefix()
 			{
-				Cheat? noKnockback = CheatManager.GetInstance("NoKnockback");
-				if (noKnockback != null) return !noKnockback.toggled;
-				return true;
+				return !CheatManager.GetToggled("NoKnockback");
 			}
 		}
 
@@ -92,9 +92,7 @@ namespace DyingInside.Patches
 		{
 			private static bool Prefix()
 			{
-				Cheat? noKnockback = CheatManager.GetInstance("NoKnockback");
-				if (noKnockback != null) return !noKnockback.toggled;
-				return true;
+				return !CheatManager.GetToggled("NoKnockback");
 			}
 		}
 
@@ -103,9 +101,7 @@ namespace DyingInside.Patches
 		{
 			private static bool Prefix()
 			{
-				Cheat? noKnockback = CheatManager.GetInstance("NoKnockback");
-				if (noKnockback != null) return !noKnockback.toggled;
-				return true;
+				return !CheatManager.GetToggled("NoKnockback");
 			}
 		}
 
@@ -114,9 +110,7 @@ namespace DyingInside.Patches
 		{
 			private static bool Prefix()
 			{
-				Cheat? noKnockback = CheatManager.GetInstance("NoKnockback");
-				if (noKnockback != null) return !noKnockback.toggled;
-				return true;
+				return !CheatManager.GetToggled("NoKnockback");
 			}
 		}
 
@@ -125,9 +119,7 @@ namespace DyingInside.Patches
 		{
 			private static bool Prefix()
 			{
-				Cheat? noKnockback = CheatManager.GetInstance("NoKnockback");
-				if (noKnockback != null) return !noKnockback.toggled;
-				return true;
+				return !CheatManager.GetToggled("NoKnockback");
 			}
 		}
 
@@ -136,9 +128,7 @@ namespace DyingInside.Patches
 		{
 			private static bool Prefix()
 			{
-				Cheat? noKnockback = CheatManager.GetInstance("NoKnockback");
-				if (noKnockback != null) return !noKnockback.toggled;
-				return true;
+				return !CheatManager.GetToggled("NoKnockback");
 			}
 		}
 
@@ -147,9 +137,7 @@ namespace DyingInside.Patches
 		{
 			private static bool Prefix()
 			{
-				Cheat? noKnockback = CheatManager.GetInstance("NoKnockback");
-				if (noKnockback != null) return !noKnockback.toggled;
-				return true;
+				return !CheatManager.GetToggled("NoKnockback");
 			}
 		}
 
@@ -158,9 +146,7 @@ namespace DyingInside.Patches
 		{
 			private static bool Prefix()
 			{
-				Cheat? noKnockback = CheatManager.GetInstance("NoKnockback");
-				if (noKnockback != null) return !noKnockback.toggled;
-				return true;
+				return !CheatManager.GetToggled("NoKnockback");
 			}
 		}
 	}
