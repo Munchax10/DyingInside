@@ -37,7 +37,7 @@ namespace DyingInside.Cheats.Movement
 				tickstowait--;
 				return;
 			}
-			if (path == null || count + 1 >= path.Count)
+			if (path == null || count + 1 > path.Count)
 			{
 				return;
 			}
